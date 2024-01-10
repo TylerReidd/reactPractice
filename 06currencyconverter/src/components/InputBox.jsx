@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useId} from 'react'
 //Parameters are things that need to be rendered and accomplished by the input box
 //need to have a label with an amount, a method for what happens when amount is changed,
 //a method for what happens when currency gets changed, and an array for the options for the different currencies. 
@@ -13,11 +13,15 @@ function InputBox({
   currencyDisabled = false,
   className = "",
 }) {
+
+  const id = useId()
+
   return (
     <div className={`bg-white p3- rounded-lg text-sm flex ${className}`}> 
       <div className='w-1-2'>
-        <label className='text-black/40 mb-2 inline-block' >{label}</label>
+        <label htmlFor={id} className='text-black/40 mb-2 inline-block' >{label}</label>
         <input
+         id={id}
          type="number"
          className='outline-none w-full bg-transparent py-1.5'
          placeholder='Amount'
